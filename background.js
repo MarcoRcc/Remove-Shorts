@@ -11,9 +11,24 @@ let option = {
   hideShortsFeed: true
 };
 
-chrome.storage.sync.set({list:option}, function(){
-  //alert("Disattivato nei Video");
+browser.storage.sync.get({list:[]},function(data){
+  //alert("Ritirato");
+  console.log(data.list);
+
+  let temp = data.list;
+
+  if(temp.length == 0){
+    browser.storage.sync.set({list:option}, function(){
+      //alert("Disattivato nei Video");
+    });
+  }
 });
+
+
+
+/*chrome.storage.sync.set({list:option}, function(){
+  //alert("Disattivato nei Video");
+});*/
 
 
 //PROVA PASSAGGIO INFORMAZIONI

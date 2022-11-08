@@ -237,7 +237,7 @@ function handleUrlChange() {
   
   //============================================================
   //PROVA
-  chrome.storage.sync.get({list:[]},function(data){
+  browser.storage.sync.get({list:[]},function(data){
     //alert("Ritirato");
     console.log(data.list);
     option = data.list;
