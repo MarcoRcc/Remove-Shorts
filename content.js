@@ -27,6 +27,9 @@ let option;
 //URL
 let url = location.href;
 
+//ENABLE
+let enable;
+
 // Send a "get settings" message to the background script.
 browser.runtime.sendMessage({ getSettings: true });
 
@@ -125,8 +128,23 @@ function runDynamicSettings() {
     handleUrlChange();
   }
 
-
+  //PROVA
+  //if(option["extensionEnable"]){
+    //console.log("ATTIVO");
   // Hide shorts on the results page
+  //console.log(option["extensionEnable"]);
+  //=================================================================================
+  try {
+    if(option["extensionEnable"] == true || option["extensionEnable"] == false){
+      enable = option["extensionEnable"];
+    }
+  } catch (error) {
+    
+  }
+  //==================================================================================
+
+  if(enable){ //PROVA
+
   if (onResultsPage) {
     const shortResults = Array.from(document.querySelectorAll('a[href^="/shorts/"]:not([marked_as_short])'));
     shortResults.forEach(sr => {
@@ -223,6 +241,9 @@ function runDynamicSettings() {
     }
 
   }
+
+  }//PROVA
+
   requestRunDynamicSettings()
 }
   

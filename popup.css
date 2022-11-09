@@ -60,3 +60,11 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+  div {
+    width: 250px;
+    padding: 10px;
+    border: 2px solid black;
+    margin: 0;
+    border-radius: 25px;
+  }

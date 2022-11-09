@@ -8,7 +8,8 @@ let option = {
   hideShortsFeatured: false,
   hideShortsChannel: true,
   hideShortsHome: true,
-  hideShortsFeed: true
+  hideShortsFeed: true,
+  extensionEnable: true
 };
 
 browser.storage.sync.get({list:[]},function(data){
