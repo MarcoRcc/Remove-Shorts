@@ -59,7 +59,21 @@ function updateData(){
         //alert("Disattivato nei Video");
     });
 
-    chrome.tabs.reload();
+    //GET CURRENT TAB -- PROVA 
+    var tab = getCurrentTabUrl();
+    getCurrentTabUrl().then(url => {
+        
+        /*if (/www.youtube.com/.test(window.location.href)){
+            alert("CIAO");
+        }*/
+        if(url.includes("www.youtube.com")){
+            //alert("YOUTUBE");
+            //Reload if i'm on youtube website
+            chrome.tabs.reload();
+        }
+    });
+
+    
 }
 
 function changeEnable(){
@@ -115,6 +129,13 @@ function changeEnable(){
     }
     
     //alert(enable.checked);
+}
+
+//PROVA
+async function getCurrentTabUrl() {
+    let queryOptions = { active: true, currentWindow: true };
+    let [tab] = await chrome.tabs.query(queryOptions);
+    return tab.url
 }
 
 //UpdateData
