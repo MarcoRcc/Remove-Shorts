@@ -5,6 +5,35 @@ all'interno del sito web "youtube.com".
 
 ## Funzionalità
 
-+ Video section
-+ Search result
++ [Video section](#Video_section)  
++ [Feed section](#Feed_section) 
++ [Search result](#Search_result) 
++ [Channel Short-slide](#Channel_Short-slide)
++ [Home Short-slide](#Home_Short-slide) 
++ [Icons](#Icons) 
+
+<a name="Video_section"></a>
+## Video section 
+Permette l'eliminazione degli Shorts all'interno della sezione "video" di un canale YouTube
+
+<a name="Feed_section"></a>
+## Feed section 
+Elimina gli shorts all'interno della secione "Iscrizioni" (Feed)
+
+<a name="Search_result"></a>
+## Search result
+Rimuove tutti gli Shorts dalle ricerce effettuate tramite l'apposita barra
+
+<a name="Channel_Short-slide"></a>
+## Channel Short-slide
+Rimuove la Shorts-slide all'interno della sezione Home di un canale YouTube
+
+<a name="Home_Short-slide"></a>
+## Home Short-slide
+Rimuove la Shorts-slide all'interno della propria sezione "Home" di YouTube
+
+<a name="Icons"></a>
+## Icons
+Permette la rimozione di diverse icone all'interno dell'interfaccia di YouTube
++Shorts Icon Home
 
