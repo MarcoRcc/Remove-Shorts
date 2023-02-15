@@ -5,6 +5,7 @@ let op = {
     hideShortsChannel: true,
     hideShortsHome: true,
     hideShortsFeed: true,
+    hideShortsIconHome: true,
     extensionEnable: true
 };
 //CI VUOLE UNA FUNZIONE PER LEGGERE LO STORAGE ALL'AVVIO  
@@ -19,18 +20,12 @@ function retriveData(){
         document.getElementById("hideShortsHome").checked = op["hideShortsHome"];
         document.getElementById("hideShortsFeed").checked = op["hideShortsFeed"];
         document.getElementById("extensionEnable").checked = op["extensionEnable"];
+        document.getElementById("hideShortsIconHome").checked = op["hideShortsIconHome"]; 
 
-        //IJIJIJIJIJIJ
         changeEnable();
         
     });
 
-    //PROVA
-    //updateData();
-
-    //alert("ciao = " + op["extensionEnable"]);
-
-    //changeEnable();
 }
 
 
@@ -44,6 +39,9 @@ function updateData(){
     let shortFeed = document.getElementById("hideShortsFeed");
     let enable = document.getElementById("extensionEnable");
 
+    //PROVA
+    let shortsIconHome = document.getElementById("hideShortsIconHome"); 
+
     //MODIFICA DI OP
     op["hideShortsVideo"] = shortVideo.checked;
     op["hideShortsResult"] = shortResult.checked;
@@ -51,6 +49,9 @@ function updateData(){
     op["hideShortsHome"] = shortHome.checked;
     op["hideShortsFeed"] = shortFeed.checked;
     op["extensionEnable"] = enable.checked;
+
+    //PROVA
+    op["hideShortsIconHome"] = shortsIconHome.checked;
 
     //PROVA
     //changeEnable();
@@ -84,6 +85,9 @@ function changeEnable(){
     let shortFeed = document.getElementById("hideShortsFeed");
     let enable = document.getElementById("extensionEnable");
 
+    //PROVA
+    let shortsIconHome = document.getElementById("hideShortsIconHome");
+
     let firstDiv = document.getElementById("firstDiv");
     
     //alert(op["extensionEnable"]);
@@ -94,6 +98,8 @@ function changeEnable(){
         shortChannel.disabled = false;
         shortHome.disabled = false;
         shortFeed.disabled = false;
+
+        shortsIconHome.disabled = false;
 
         firstDiv.style.backgroundColor = 'white';
         firstDiv.style.opacity = 1;
@@ -114,6 +120,8 @@ function changeEnable(){
         shortChannel.disabled = true;
         shortHome.disabled = true;
         shortFeed.disabled = true;
+
+        shortsIconHome.disabled - true;
 
         firstDiv.style.backgroundColor = 'Gray';
         firstDiv.style.opacity = .5;
@@ -146,10 +154,13 @@ document.getElementById("hideShortsHome").addEventListener('change',updateData);
 document.getElementById("hideShortsFeed").addEventListener('change',updateData);
 document.getElementById("extensionEnable").addEventListener('change',updateData);
 
+//PROVA
+document.getElementById("hideShortsIconHome").addEventListener('change',updateData);
+
+
 //Enable/Disable
 document.getElementById("extensionEnable").addEventListener('change',changeEnable);
 
 
 //Apertura del popup
 window.addEventListener('DOMContentLoaded',retriveData);
-//window.addEventListener('DOMContentLoaded',changeEnable);

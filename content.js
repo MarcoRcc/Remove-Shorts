@@ -6,12 +6,13 @@ if (typeof browser === 'undefined') {
 const HTML = document.documentElement;  
   
 const resultsPageRegex = new RegExp('.*://.*youtube\.com/results.*', 'i');
-const videoPageRegex = new RegExp('.*://.*youtube\.com/*.*/videos.*', 'i'); //PROVA
+const videoPageRegex = new RegExp('.*://.*youtube\.com/*.*/videos.*', 'i');
 const featuredPageRegex = new RegExp('.*://.*youtube\.com/c/s*.*/featured.*', 'i');
 const channelPageRegex = new RegExp('.*://.*youtube\.com/c/*.*', 'i');
 const homepageRegex =    new RegExp('.*://(www|m)\.youtube\.com/$',  'i');
 const shortsRegex =      new RegExp('.*://.*youtube\.com/shorts.*',  'i');
 const feedPageRegex =    new RegExp('.*://.*youtube\.com/feed.*',  'i');
+const newChannelPageRegex = new RegExp('.*://.*youtube\.com/@*.*', 'i');
   
 // Dynamic settings variables
 let onVideoPage = videoPageRegex.test(location.href);
@@ -20,6 +21,7 @@ let onChannelPage = channelPageRegex.test(location.href);
 let onResultsPage = resultsPageRegex.test(location.href); 
 let onHomePage = homepageRegex.test(location.href);
 let onFeedPageRegex = feedPageRegex.test(location.href);
+let onNewChannelPageRegex = newChannelPageRegex.test(location.href);
 
 //OPZIONI DA BACKGROUND
 let option;
@@ -40,21 +42,6 @@ browser.runtime.onMessage.addListener((data, sender) => {
 
   //RICEZIONE DELLE OPZIONI
   option = data.option;
-  
-  //====================================================================
-  /*chrome.storage.sync.get({list:[]},function(d){
-    //alert("Ritirato");
-    console.log(d.list);
-    option = d.list;
-  });
-  if(option == null){
-    console.log("PRUPRU");
-    chrome.storage.sync.set({list:data.option}, function(){
-      //alert("Disattivato nei Video");
-    });
-    option = data.option;
-  }*/
-  //====================================================================
 
   runDynamicSettings();
 
@@ -62,28 +49,7 @@ browser.runtime.onMessage.addListener((data, sender) => {
 });
 
 
-//PROVA RICEZIONE SECONDO MESSAGGIO
 
-//=====================================================================
-/*chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    if( request.message === "start" ) {
-      
-      option = request.op;
-
-      console.log(request.op + " CIAO");
-    }
-  }
-);*/
-/*chrome.storage.onChanged.addListener(function (changes, namespace) {
-  for (let [option, { oldValue, newValue }] of Object.entries(changes)) {
-    console.log(
-      `Storage key "${option}" in namespace "${namespace}" changed.`,
-      `Old value was "${oldValue}", new value is "${newValue}".`
-    );
-  }
-});*/
-//====================================================================
   
 // Dynamic settings (i.e. js instead of css)
 document.addEventListener("DOMContentLoaded", event => {
@@ -96,12 +62,12 @@ document.addEventListener("DOMContentLoaded", event => {
   onResultsPage = resultsPageRegex.test(location.href);
 
 
-  //PROVA
   onVideoPage = videoPageRegex.test(location.href);
   onFeaturedPage = featuredPageRegex.test(location.href);
   onChannelPage = channelPageRegex.test(location.href);
   onHomePage = homepageRegex.test(location.href);
   onFeedPageRegex = feedPageRegex.test(location.href);
+  onNewChannelPageRegex = newChannelPageRegex.test(location.href);
 
   requestRunDynamicSettings()
 });
@@ -125,14 +91,14 @@ function runDynamicSettings() {
     onHomePage = homepageRegex.test(location.href);
     onFeedPageRegex = feedPageRegex.test(location.href);
 
+
+    //PROVA
+    onNewChannelPageRegex = newChannelPageRegex.test(location.href);
+
     handleUrlChange();
   }
 
-  //PROVA
-  //if(option["extensionEnable"]){
-    //console.log("ATTIVO");
-  // Hide shorts on the results page
-  //console.log(option["extensionEnable"]);
+ 
   //=================================================================================
   try {
     if(option["extensionEnable"] == true || option["extensionEnable"] == false){
@@ -143,7 +109,7 @@ function runDynamicSettings() {
   }
   //==================================================================================
 
-  if(enable){ //PROVA
+  if(enable){ 
 
   if (onResultsPage) {
     const shortResults = Array.from(document.querySelectorAll('a[href^="/shorts/"]:not([marked_as_short])'));
@@ -183,7 +149,7 @@ function runDynamicSettings() {
 
   }
 
-  //PROVA
+ 
   if (onVideoPage) {  
     const shortResults = Array.from(document.querySelectorAll('a[href^="/shorts/"]:not([marked_as_short])'));
     shortResults.forEach(sr => {
@@ -228,11 +194,13 @@ function runDynamicSettings() {
     }
 
   }
-//HOME
-  if (onHomePage) {
-    const result = document.querySelector('ytd-rich-section-renderer');
+
+  //NEW CHANNEL
+  if (onNewChannelPageRegex) {
+    const result = document.querySelector('ytd-reel-shelf-renderer');
+    
     try {
-      if(option["hideShortsHome"]){
+      if(option["hideShortsChannel"]){
         result.setAttribute('is_short', true);
         result.style.display = 'none';
       }
@@ -242,7 +210,35 @@ function runDynamicSettings() {
 
   }
 
-  }//PROVA
+
+//HOME
+  if (onHomePage) {
+    const result = document.querySelector('ytd-rich-section-renderer');
+    try {
+      if(option["hideShortsHome"]){
+        result.setAttribute('is_short', true);
+        result.style.display = 'none';
+      }
+
+      //Hide shorts icon on hamburger menu 
+
+      if(option["hideShortsIconHome"]){
+        const result2 = document.querySelectorAll("ytd-guide-entry-renderer");
+        result2[1].style.display = 'none';
+
+        const result3 = document.querySelectorAll("ytd-mini-guide-entry-renderer");
+        result3[1].style.display = 'none';
+
+      }
+
+
+    } catch (error) {
+      //sonsole.log(error);
+    }
+
+  }
+
+  }
 
   requestRunDynamicSettings()
 }
@@ -257,10 +253,8 @@ function handleUrlChange() {
   HTML.setAttribute('on_video_page', onVideoPage);
   
   //============================================================
-  //PROVA
   browser.storage.sync.get({list:[]},function(data){
-    //alert("Ritirato");
-    console.log(data.list);
+    
     option = data.list;
   });
   //============================================================
