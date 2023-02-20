@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+nav {
+  background-color: #f2f2f2;
+  padding: 10px;
+  overflow: hidden;
+}
+nav a {
+  float: left;
+  display: block;
+  color: #778088e1;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+nav a:hover {
+  background-color: #ddd;
+  color: #333;
+}
+section {
+  height: 100vh;
+  padding: 50px;
+  display: none;
+  text-align: center;
+  transition: opacity 1s ease-in-out;
+}
+section.active {
+  display: block;
+  opacity: 1;
+}
+body {
+overflow: hidden; /* Hide scrollbars */
+}
+
+
+/* The sidebar menu */
+.sidenav {
+height: 100%; /* Full-height: remove this if you want "auto" height */
+width: 230px; /* Set the width of the sidebar */
+position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+z-index: 1; /* Stay on top */
+top: 0; /* Stay at the top */
+left: 0;
+background-color: #494545; /* Black */
+overflow-x: hidden; /* Disable horizontal scroll */
+padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+padding: 6px 8px 6px 35px;
+text-decoration: none;
+font-size: 25px;
+color: #beafaf;
+display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+color: #f1f1f1;
+background-color: #333;
+}
+
+/* Style page content */
+.main {
+margin-left: 160px; /* Same as the width of the sidebar */
+padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+
+.outer {
+  background: #ffffff;
+  padding: 6px 8px 6px 35px;
+  text-align: left;
+}
+
+.inner {
+  display: inline-block;
+  background: #ffffff;
+  margin-left: 40px;
+}
+
+.active {
+  margin-left: 300px;
+}
+
+.desk{
+  padding: 6px 8px 6px 10px;
+}
+
+.riga{
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+}
