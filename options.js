@@ -19,23 +19,47 @@ function getData(){
         //INSERIMENTO INFORMAZIONI ALL'INTERNO DELLA PAGINA IMPOSTAZIONI
 
 
-        /*
+        
         document.getElementById("hideShortsVideo").checked = op["hideShortsVideo"];
         document.getElementById("hideShortsResult").checked = op["hideShortsResult"];
         document.getElementById("hideShortsChannel").checked = op["hideShortsChannel"];
         document.getElementById("hideShortsHome").checked = op["hideShortsHome"];
         document.getElementById("hideShortsFeed").checked = op["hideShortsFeed"];
-        document.getElementById("extensionEnable").checked = op["extensionEnable"];
+        /*document.getElementById("extensionEnable").checked = op["extensionEnable"];*/
         document.getElementById("hideShortsIconHome").checked = op["hideShortsIconHome"]; 
-        */
-        changeEnable();
+        
+        //changeEnable();
         
     });
 }
 
+
+
+
+
 function saveData(){
 
-    //PRENDERE I DATI DALLA PAGINA IMPOSTAZIONI
+    //VISITA DI TUTTI I TOGGLE
+    let shortVideo = document.getElementById("hideShortsVideo");
+    let shortResult = document.getElementById("hideShortsResult");
+    let shortChannel = document.getElementById("hideShortsChannel");
+    let shortHome = document.getElementById("hideShortsHome");
+    let shortFeed = document.getElementById("hideShortsFeed");
+   /* let enable = document.getElementById("extensionEnable"); */
+
+    //PROVA
+    let shortsIconHome = document.getElementById("hideShortsIconHome"); 
+
+    //MODIFICA DI OP
+    op["hideShortsVideo"] = shortVideo.checked;
+    op["hideShortsResult"] = shortResult.checked;
+    op["hideShortsChannel"] = shortChannel.checked;
+    op["hideShortsHome"] = shortHome.checked;
+    op["hideShortsFeed"] = shortFeed.checked;
+    /*op["extensionEnable"] = enable.checked;*/
+
+    //PROVA
+    op["hideShortsIconHome"] = shortsIconHome.checked;
 
 
     chrome.storage.sync.set({list:op}, function(){
@@ -44,6 +68,19 @@ function saveData(){
 }
 
 
+//Load Data After section change
+window.addEventListener('DOMContentLoaded',getData);
+let v = document.getElementById('i');
+v.addEventListener('click',getData);
+
+//UpdateData
+document.getElementById("hideShortsVideo").addEventListener('change',saveData);
+document.getElementById("hideShortsResult").addEventListener('change',saveData);
+document.getElementById("hideShortsChannel").addEventListener('change',saveData);
+document.getElementById("hideShortsHome").addEventListener('change',saveData);
+document.getElementById("hideShortsFeed").addEventListener('change',saveData);
+document.getElementById("hideShortsIconHome").addEventListener('change',saveData);
+/*document.getElementById("extensionEnable").addEventListener('change',saveData);*/
 
 
 const sections = document.querySelectorAll("section");

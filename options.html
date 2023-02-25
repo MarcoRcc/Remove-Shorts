@@ -10,28 +10,27 @@
 <body>
 
   <div class="sidenav">
-    <a href="#section1">About</a>
-    <a href="#section2">Services</a>
-    <a href="#section3">Clients</a>
-    <a href="#">Contact</a>
+    <a href="#shorts" id="s">Shorts</a>
+    <a href="#icons" id="i">Icons</a>
+    <!--  <a href="#about" id="a">About</a> -->
   </div>
 
 
-  <section id="section1" class="active">
-    <h2>Section 1</h2>
+  <section id="shorts" class="active">
+    <h1 class="title">Shorts</h1>
 
     <div class="outer">
 
       <div class="riga">
         <div class="inner">
           <p class="desk">
-            Ciao ciaosdijoasdjoasidjoiasjdoiasjdoasjdadaskldnasnd
-            dsklsadnlakndlasn
+            <b>Result Page</b>
+            <br>Hide all the Shorts during a search page.
           </p>
         </div>
         <div class="inner">
           <label class="switch">
-            <input type="checkbox" id="extensionEnable">
+            <input type="checkbox" id="hideShortsResult">
             <span class="slider round"></span>
           </label>
         </div>
@@ -40,13 +39,13 @@
       <div class="riga">
         <div class="inner">
           <p class="desk">
-            Ciao ciaosdijoasdjoasidjoiasjdoiasjdoasjdadaskldnasnd
-            dsklsadnlakndlasn
+            <b>Channel Video</b>
+            <br>Hide all the Shorts inside a Youtube channel, in the video's section.
           </p>
         </div>
         <div class="inner">
           <label class="switch">
-            <input type="checkbox" id="extensionEnable">
+            <input type="checkbox" id="hideShortsVideo">
             <span class="slider round"></span>
           </label>
         </div>
@@ -56,13 +55,43 @@
       <div class="riga">
         <div class="inner">
           <p class="desk">
-            Ciao ciaosdijoasdjoasidjoiasjdoiasjdoasjdadaskldnasnd
-            dsklsadnlakndlasn
+            <b>Channel Homepage</b>
+            <br>Remove Shorts inside the Channel Homepage
           </p>
         </div>
         <div class="inner">
           <label class="switch">
-            <input type="checkbox" id="extensionEnable">
+            <input type="checkbox" id="hideShortsChannel">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="riga">
+        <div class="inner">
+          <p class="desk">
+            <b>Personal Homepage</b>
+            <br>Remove Shorts on your personal home page section.
+          </p>
+        </div>
+        <div class="inner">
+          <label class="switch">
+            <input type="checkbox" id="hideShortsHome">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="riga">
+        <div class="inner">
+          <p class="desk">
+            <b>Feed</b>
+            <br>Remove Shorts on Feed page.
+          </p>
+        </div>
+        <div class="inner">
+          <label class="switch">
+            <input type="checkbox" id="hideShortsFeed">
             <span class="slider round"></span>
           </label>
         </div>
@@ -71,12 +100,29 @@
     </div>
   </section>
   
-  <section id="section2">
-    <h2>Section 2</h2>
-    <p>This is the content of section 2.</p>
+  <section id="icons">
+    <h1 class="title">Icons</h1>
+    <div class="outer">
+
+      <div class="riga">
+        <div class="inner">
+          <p class="desk">
+            <b>Home Shorts Icon</b>
+            <br>Hide shorts icon on the left home menu.
+          </p>
+        </div>
+        <div class="inner">
+          <label class="switch">
+            <input type="checkbox" id="hideShortsIconHome">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+    </div>
   </section>
-  <section id="section3">
-    <h2>Section 3</h2>
+  <section id="about">
+    <h1 class="title">About</h1>
     <p>This is the content of section 3.</p>
   </section>
 
