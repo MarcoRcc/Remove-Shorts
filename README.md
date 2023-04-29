@@ -37,3 +37,10 @@ Rimuove la Shorts-slide all'interno della propria sezione "Home" di YouTube
 Permette la rimozione di diverse icone all'interno dell'interfaccia di YouTube
 +Shorts Icon Home
 
+<a name="Setup"></a>
+## SetUp
+Per installare l'estensione seguire i seguenti passi:
+- Aprire Chrome
+- Premere sull'icona in alto a destra per accedere alle estensione
+- Attivare la modalità sviluppatore
+- Caricare la cartella scaricata usando il pulsante "Carica estensione non pacchettizzata"
